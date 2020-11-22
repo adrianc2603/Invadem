@@ -1,6 +1,9 @@
 package invadem;
 
-import invadem.LevelBuilder.*;
+import invadem.Components.Barriers.Barrier;
+import invadem.Components.Invaders.Invader;
+import invadem.Components.Projectile;
+import invadem.Level.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
