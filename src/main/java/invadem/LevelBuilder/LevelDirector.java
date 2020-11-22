@@ -1,5 +1,6 @@
 package invadem.LevelBuilder;
 
+import invadem.ConcreteLevel;
 import invadem.Level;
 import processing.core.PApplet;
 

@@ -114,6 +114,6 @@ public class ConcreteLevelBuilder implements LevelBuilder {
 
     @Override
     public Level getLevel(PApplet parent, long shootTime, int currentScore, int highScore) {
-        return new Level(parent, shootTime, currentScore, highScore, tank, barriers, invaders);
+        return new ConcreteLevel(parent, shootTime, currentScore, highScore, tank, barriers, invaders);
     }
 }

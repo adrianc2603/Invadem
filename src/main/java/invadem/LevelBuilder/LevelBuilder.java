@@ -1,6 +1,6 @@
 package invadem.LevelBuilder;
 
-import invadem.Level;
+import invadem.*;
 import processing.core.PApplet;
 
 public interface LevelBuilder {
