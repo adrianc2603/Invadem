@@ -1,8 +1,8 @@
 package invadem.LevelBuilder;
 
 import invadem.*;
-import invadem.InvaderFactory.ConcreteInvaderFactory;
-import invadem.InvaderFactory.InvaderFactory;
+import invadem.BarrierFactory.*;
+import invadem.InvaderFactory.*;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ public class ConcreteLevelBuilder implements LevelBuilder {
     private List<Invader> invaders = new ArrayList<>();
 
     InvaderFactory invaderFactory = new ConcreteInvaderFactory();
+    BarrierFactory barrierFactory = new ConcreteBarrierFactory();
 
     @Override
     public void buildLevel(PApplet parent) {
@@ -27,31 +28,31 @@ public class ConcreteLevelBuilder implements LevelBuilder {
     public void buildBarriers(PApplet parent) {
 
         // Initialise left barriers
-        barriers.add(new Barrier("barrier_solid", 214, 438, parent));
-        barriers.add(new Barrier("barrier_solid", 214, 430, parent));
-        barriers.add(new Barrier("barrier_left", 214, 422, parent));
-        barriers.add(new Barrier("barrier_top", 222, 422, parent));
-        barriers.add(new Barrier("barrier_right", 230, 422, parent));
-        barriers.add(new Barrier("barrier_solid", 230, 430, parent));
-        barriers.add(new Barrier("barrier_solid", 230, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 214, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 214, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.LEFT, 214, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.TOP, 222, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.RIGHT, 230, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 230, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 230, 438, parent));
 
         // Initialise centre barrier
-        barriers.add(new Barrier("barrier_solid", 319, 438, parent));
-        barriers.add(new Barrier("barrier_solid", 319, 430, parent));
-        barriers.add(new Barrier("barrier_left", 319, 422, parent));
-        barriers.add(new Barrier("barrier_top", 327, 422, parent));
-        barriers.add(new Barrier("barrier_right", 335, 422, parent));
-        barriers.add(new Barrier("barrier_solid", 335, 430, parent));
-        barriers.add(new Barrier("barrier_solid", 335, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 319, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 319, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.LEFT, 319, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.TOP, 327, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.RIGHT, 335, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 335, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 335, 438, parent));
 
         // Initialise right barrier
-        barriers.add(new Barrier("barrier_solid", 424, 438, parent));
-        barriers.add(new Barrier("barrier_solid", 424, 430, parent));
-        barriers.add(new Barrier("barrier_left", 424, 422, parent));
-        barriers.add(new Barrier("barrier_top", 432, 422, parent));
-        barriers.add(new Barrier("barrier_right", 440, 422, parent));
-        barriers.add(new Barrier("barrier_solid", 440, 430, parent));
-        barriers.add(new Barrier("barrier_solid", 440, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 424, 438, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 424, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.LEFT, 424, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.TOP, 432, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.RIGHT, 440, 422, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 440, 430, parent));
+        barriers.add(barrierFactory.createBarrier(BarrierFactory.BarrierType.SOLID, 440, 438, parent));
     }
 
     @Override

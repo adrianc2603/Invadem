@@ -4,8 +4,8 @@ import processing.core.PApplet;
 
 public class ArmouredInvader extends Invader {
 
-    public ArmouredInvader(String rootImagePath, int x, int y, PApplet parent) {
-        super(rootImagePath, x, y, parent);
+    public ArmouredInvader(int x, int y, PApplet parent) {
+        super("_armoured.png", x, y, parent);
     }
 
     int hasBeenShot(Tank tank, int tankProjectileCount) {

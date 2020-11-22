@@ -5,8 +5,8 @@ import processing.core.PImage;
 
 public class RegularInvader extends Invader {
 
-    public RegularInvader(String rootImagePath, int x, int y, PApplet parent) {
-        super(rootImagePath, x, y, parent);
+    public RegularInvader(int x, int y, PApplet parent) {
+        super(".png", x, y, parent);
     }
 
     int hasBeenShot(Tank tank, int tankProjectileCount) {

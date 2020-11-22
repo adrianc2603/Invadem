@@ -12,11 +12,11 @@ public class ConcreteInvaderFactory implements InvaderFactory {
     public Invader createInvader(InvaderType type, int x, int y, PApplet parent) {
         switch (type) {
             case ARMOURED:
-                return new ArmouredInvader("_armoured.png", x, y, parent);
+                return new ArmouredInvader(x, y, parent);
             case POWER:
-                return new PowerInvader("_power.png", x, y, parent);
+                return new PowerInvader(x, y, parent);
             case REGULAR:
-                return new RegularInvader(".png", x, y, parent);
+                return new RegularInvader(x, y, parent);
             default: // Will never get here
                 return null;
         }

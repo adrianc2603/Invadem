@@ -5,8 +5,8 @@ import processing.core.PImage;
 
 public class PowerInvader extends Invader {
 
-    public PowerInvader(String rootImagePath, int x, int y, PApplet parent) {
-        super(rootImagePath, x, y, parent);
+    public PowerInvader(int x, int y, PApplet parent) {
+        super("_power.png", x, y, parent);
     }
 
     int hasBeenShot(Tank tank, int tankProjectileCount) {

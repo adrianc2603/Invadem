@@ -12,11 +12,11 @@ public class Barrier extends Components {
     private int count;
     private ShotState shotState;
     PApplet parent;
-    String rootImagePath;
+    String imagePathBeginning;
 
-    public Barrier(String rootImagePath, int x, int y, PApplet parent) {
-        super(parent.loadImage(rootImagePath + "1.png"), x, y);
-        this.rootImagePath = rootImagePath;
+    public Barrier(String imagePathBeginning, int x, int y, PApplet parent) {
+        super(parent.loadImage(imagePathBeginning + "1.png"), x, y);
+        this.imagePathBeginning = imagePathBeginning;
         this.parent = parent;
         this.x = x;
         this.y = y;
@@ -26,7 +26,7 @@ public class Barrier extends Components {
 
     @Override
     PImage getImage() {
-        return shotState.getImage(this.rootImagePath, this.parent);
+        return shotState.getImage(this.imagePathBeginning, this.parent);
     }
 
     int getCount() {
