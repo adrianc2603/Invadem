@@ -7,14 +7,14 @@ import processing.core.PImage;
 
 import java.util.List;
 
-class Barrier extends Components {
+public class Barrier extends Components {
 
     private int count;
     private ShotState shotState;
     PApplet parent;
     String rootImagePath;
 
-    Barrier(String rootImagePath, int x, int y, PApplet parent) {
+    public Barrier(String rootImagePath, int x, int y, PApplet parent) {
         super(parent.loadImage(rootImagePath + "1.png"), x, y);
         this.rootImagePath = rootImagePath;
         this.parent = parent;

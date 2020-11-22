@@ -5,13 +5,13 @@ import processing.core.PImage;
 import java.util.ArrayList;
 import java.util.List;
 
-class Tank extends Components {
+public class Tank extends Components {
 
     private int count;
 
     private List<Projectile> projectiles;
 
-    Tank(PImage image, int x, int y) {
+    public Tank(PImage image, int x, int y) {
         super(image, x, y);
         this.count = 0;
         this.projectiles = new ArrayList<>();

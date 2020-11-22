@@ -1,5 +1,6 @@
 package invadem;
 
+import invadem.LevelBuilder.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PImage;
@@ -35,7 +36,9 @@ public class App extends PApplet {
             currentScore = level.getCurrentScore();
             shootTime = 5000;
         }
-        level = new Level(this, shootTime, currentScore, highScore);
+
+        LevelDirector director = new LevelDirector(new ConcreteLevelBuilder(), this, shootTime, currentScore, highScore);
+        level = director.construct();
 
         gameOver = loadImage("gameover.png");
         gameOverFlag = false;

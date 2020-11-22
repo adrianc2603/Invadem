@@ -8,38 +8,33 @@ import processing.core.PApplet;
 public class Level {
 
     private Tank tank;
-    private List<Projectile> invaderProjectiles;
     private List<Barrier> barriers;
     private List<Invader> invaders;
 
-    private int tankProjectileCount;
-    private int invaderProjectileCount;
+    private List<Projectile> invaderProjectiles;
+
     long shootStartTime;
     long shootTime;
 
     private int currentScore;
     private final int highScore;
 
-    private long frameCount;
+    private long frameCount = 0;
 
     private PApplet parent;
 
-    public Level(PApplet parent, long shootTime, int currentScore, int highScore) {
-        this.tank = new Tank(parent.loadImage("tank1.png"), 320, 455);
-        this.invaderProjectiles = new ArrayList<>();
-        this.barriers = BuildArrayLists.buildBarriers(parent);
-        this.invaders = BuildArrayLists.buildInvaders(parent);
+    public Level(PApplet parent, long shootTime, int currentScore, int highScore, Tank tank, List<Barrier> barriers, List<Invader> invaders) {
+        this.tank = tank;
+        this.barriers = barriers;
+        this.invaders = invaders;
 
-        this.tankProjectileCount = 0;
-        this.invaderProjectileCount = 0;
+        this.invaderProjectiles = new ArrayList<>();
 
         this.shootStartTime = System.currentTimeMillis();
         this.shootTime = shootTime;
 
         this.currentScore = currentScore;
         this.highScore = highScore;
-
-        this.frameCount = 0;
 
         this.parent = parent;
     }
@@ -94,11 +89,10 @@ public class Level {
         fireInvaderProjectile();
 
         // Move invaders across and down screen every two frames
+        frameCount++;
         if (frameCount % 2 == 0) {
             moveInvaders();
-            frameCount = 0;
         }
-        frameCount++;
 
         // Display current score and high score to screen
         parent.text("CURRENT SCORE: " + currentScore, 7, 15);
@@ -147,7 +141,7 @@ public class Level {
 
     // Fire invader projectile, destroying barrier/tank if it hits it
     private void fireInvaderProjectile() {
-        invaderProjectileCount = 0;
+        int invaderProjectileCount = 0;
         while (invaderProjectileCount < invaderProjectiles.size()) {
             if (invaderProjectiles.get(invaderProjectileCount).doesExist()) {
                 parent.image(invaderProjectiles.get(invaderProjectileCount).getImage(), invaderProjectiles.get(invaderProjectileCount).getX(), invaderProjectiles.get(invaderProjectileCount).getY());
@@ -168,12 +162,12 @@ public class Level {
 
     // Fire projectile from tank and destroy barrier/invader if it hits it
     private void fireTankProjectile() {
-        tankProjectileCount = 0;
+        int tankProjectileCount = 0;
         while (tankProjectileCount < tank.getProjectiles().size()) {
             if (tank.getProjectiles().get(tankProjectileCount).doesExist()) {
                 parent.image(tank.getProjectiles().get(tankProjectileCount).getImage(), tank.getProjectiles().get(tankProjectileCount).getX(), tank.getProjectiles().get(tankProjectileCount).getY());
                 tank.getProjectiles().get(tankProjectileCount).moveUp();
-                if (barrierIsHit(tankProjectileCount, tank.getProjectiles()) || destroyInvader() || tank.getProjectiles().get(tankProjectileCount).getY() == 0) {
+                if (barrierIsHit(tankProjectileCount, tank.getProjectiles()) || destroyInvader(tankProjectileCount) || tank.getProjectiles().get(tankProjectileCount).getY() == 0) {
                     tank.getProjectiles().get(tankProjectileCount).destroy();
                 }
             }
@@ -192,7 +186,7 @@ public class Level {
     }
 
     // Remove invader from screen if it's destroyed by projectile fired by tank and return true
-    private boolean destroyInvader() {
+    private boolean destroyInvader(int tankProjectileCount) {
         int score;
         for (Invader invader : invaders) {
             score = invader.hasBeenShot(tank, tankProjectileCount);

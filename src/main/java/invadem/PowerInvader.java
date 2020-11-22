@@ -3,9 +3,9 @@ package invadem;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-class PowerInvader extends Invader {
+public class PowerInvader extends Invader {
 
-    PowerInvader(String rootImagePath, int x, int y, PApplet parent) {
+    public PowerInvader(String rootImagePath, int x, int y, PApplet parent) {
         super(rootImagePath, x, y, parent);
     }
 

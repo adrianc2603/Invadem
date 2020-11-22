@@ -5,7 +5,7 @@ import processing.core.PImage;
 
 public class RegularInvader extends Invader {
 
-    RegularInvader(String rootImagePath, int x, int y, PApplet parent) {
+    public RegularInvader(String rootImagePath, int x, int y, PApplet parent) {
         super(rootImagePath, x, y, parent);
     }
 
