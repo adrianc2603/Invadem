@@ -14,11 +14,6 @@ public class Level {
 
     private int tankProjectileCount;
     private int invaderProjectileCount;
-
-    private int countMoveDown;
-    private int countMoveHorizontal;
-    private boolean movingDown;
-
     long shootStartTime;
     long shootTime;
 
@@ -37,10 +32,6 @@ public class Level {
 
         this.tankProjectileCount = 0;
         this.invaderProjectileCount = 0;
-
-        this.countMoveDown = 0;
-        this.countMoveHorizontal = 0;
-        this.movingDown = false;
 
         this.shootStartTime = System.currentTimeMillis();
         this.shootTime = shootTime;
@@ -85,9 +76,6 @@ public class Level {
             if (barrier.doesExist() && barrier.getCount() != 3) {
                 parent.image(barrier.getImage(), barrier.getX(), barrier.getY());
             }
-            else {
-                barrier.destroy();
-            }
         }
 
         // Load invaders to screen unless they have been destroyed
@@ -120,44 +108,16 @@ public class Level {
     // Load invaders to screen unless they have been destroyed
     private void loadInvaders() {
         for (Invader invader : invaders) {
-            if (invader.doesExist() && !movingDown) {
+            if (invader.doesExist()) {
                 parent.image(invader.getImage(), invader.getX(), invader.getY());
-            }
-            else if (invader.doesExist()) {
-                parent.image(invader.getImage2(), invader.getX(), invader.getY());
             }
         }
     }
 
     // Move invaders across/down the screen
     private void moveInvaders() {
-        if (countMoveHorizontal < 30 && countMoveDown == 0) {
-            movingDown = false;
-            for (Invader invader : invaders) {
-                invader.moveRight();
-            }
-            countMoveHorizontal++;
-        }
-        if (countMoveHorizontal == 30 && countMoveDown < 8) {
-            movingDown = true;
-            for (Invader invader : invaders) {
-                invader.moveDown();
-            }
-            countMoveDown++;
-        }
-        if (countMoveHorizontal > 0 && countMoveDown == 8) {
-            movingDown = false;
-            for (Invader invader : invaders) {
-                invader.moveLeft();
-            }
-            countMoveHorizontal--;
-        }
-        if (countMoveHorizontal == 0 && countMoveDown > 0) {
-            movingDown = true;
-            for (Invader invader : invaders) {
-                invader.moveDown();
-            }
-            countMoveDown--;
+        for (Invader invader : invaders) {
+            invader.move();
         }
     }
 

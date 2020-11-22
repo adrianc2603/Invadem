@@ -1,33 +1,67 @@
 package invadem;
 
+import invadem.InvaderMovementStrategy.*;
+import processing.core.PApplet;
 import processing.core.PImage;
 
-abstract class Invader extends Components {
-
-    private PImage image2;
+public abstract class Invader extends Components {
 
     private int count;
 
-    Invader(PImage image, PImage image2, int x, int y) {
-        super(image, x, y);
-        this.image2 = image2;
+    private String imagePathEnding;
+    private PApplet parent;
+
+    int countMoveDown = 0;
+    int countMoveHorizontal = 0;
+    boolean movingDown = false;
+
+    private MovementStrategy movementStrategy;
+
+    public Invader(String imagePathEnding, int x, int y, PApplet parent) {
+        super(parent.loadImage("invader1" + imagePathEnding), x, y);
+        this.imagePathEnding = imagePathEnding;
+        this.parent = parent;
         this.count = 0;
+        this.movementStrategy = new MoveRightStrategy();
     }
 
-    PImage getImage2() {
-        return this.image2;
+    @Override
+    PImage getImage() {
+        return movementStrategy.getImage(this.imagePathEnding, this.parent);
     }
 
-    void moveRight() {
-        this.x++;
+    public void move() {
+        this.movementStrategy.move(this);
+
+        if (countMoveHorizontal < 30 && countMoveDown == 0) {
+            movingDown = false;
+            this.movementStrategy = new MoveRightStrategy();
+            countMoveHorizontal++;
+        }
+        if (countMoveHorizontal == 30 && countMoveDown < 8) {
+            movingDown = true;
+            this.movementStrategy = new MoveDownStrategy();
+            countMoveDown++;
+        }
+        if (countMoveHorizontal > 0 && countMoveDown == 8) {
+            movingDown = false;
+            this.movementStrategy = new MoveLeftStrategy();
+            countMoveHorizontal--;
+        }
+        if (countMoveHorizontal == 0 && countMoveDown > 0) {
+            movingDown = true;
+            this.movementStrategy = new MoveDownStrategy();
+            countMoveDown--;
+        }
     }
 
-    void moveDown() {
-        this.y++;
+
+    public void setX(int x) {
+        this.x = x;
     }
 
-    void moveLeft() {
-        this.x--;
+    public void setY(int y) {
+        this.y = y;
     }
 
     void incrementCount() {

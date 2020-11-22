@@ -43,52 +43,52 @@ abstract class BuildArrayLists {
         ArrayList<Invader> invaders = new ArrayList<>();
 
         // Initialise row 1 invaders (Armoured Invaders)
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"), 150, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),185, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),220, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),255, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),290, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),325, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),360, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),395, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),430, 40));
-        invaders.add(new ArmouredInvader(parent.loadImage("invader1_armoured.png"), parent.loadImage("invader2_armoured.png"),465, 40));
+        invaders.add(new ArmouredInvader("_armoured.png", 150, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 185, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 220, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 255, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 290, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 325, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 360, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 395, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 430, 40, parent));
+        invaders.add(new ArmouredInvader("_armoured.png", 465, 40, parent));
 
         // Initialise row 2 invaders (Power Invaders)
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),150, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"), 185, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),220, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"), 255, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),290, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"), 325, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),360, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),395, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),430, 80));
-        invaders.add(new PowerInvader(parent.loadImage("invader1_power.png"), parent.loadImage("invader2_power.png"),465, 80));
+        invaders.add(new PowerInvader("_power.png", 150, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 185, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 220, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 255, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 290, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 325, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 360, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 395, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 430, 80, parent));
+        invaders.add(new PowerInvader("_power.png", 465, 80, parent));
 
         // Initialise row 3 invaders
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),150, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),185, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),220, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),255, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),290, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"),parent.loadImage("invader2.png"), 325, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),360, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),395, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),430, 120));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),465, 120));
+        invaders.add(new RegularInvader(".png", 150, 120, parent));
+        invaders.add(new RegularInvader(".png", 185, 120, parent));
+        invaders.add(new RegularInvader(".png", 220, 120, parent));
+        invaders.add(new RegularInvader(".png", 255, 120, parent));
+        invaders.add(new RegularInvader(".png", 290, 120, parent));
+        invaders.add(new RegularInvader(".png", 325, 120, parent));
+        invaders.add(new RegularInvader(".png", 360, 120, parent));
+        invaders.add(new RegularInvader(".png", 395, 120, parent));
+        invaders.add(new RegularInvader(".png", 430, 120, parent));
+        invaders.add(new RegularInvader(".png", 465, 120, parent));
 
         // Initialise row 4 invaders
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),150, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"), 185, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),220, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),255, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),290, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),325, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),360, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),395, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),430, 160));
-        invaders.add(new RegularInvader(parent.loadImage("invader1.png"), parent.loadImage("invader2.png"),465, 160));
+        invaders.add(new RegularInvader(".png", 150, 160, parent));
+        invaders.add(new RegularInvader(".png", 185, 160, parent));
+        invaders.add(new RegularInvader(".png", 220, 160, parent));
+        invaders.add(new RegularInvader(".png", 255, 160, parent));
+        invaders.add(new RegularInvader(".png", 290, 160, parent));
+        invaders.add(new RegularInvader(".png", 325, 160, parent));
+        invaders.add(new RegularInvader(".png", 360, 160, parent));
+        invaders.add(new RegularInvader(".png", 395, 160, parent));
+        invaders.add(new RegularInvader(".png", 430, 160, parent));
+        invaders.add(new RegularInvader(".png", 465, 160, parent));
 
         return invaders;
     }

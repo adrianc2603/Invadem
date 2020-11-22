@@ -1,11 +1,11 @@
 package invadem;
 
-import processing.core.PImage;
+import processing.core.PApplet;
 
 class ArmouredInvader extends Invader {
 
-    ArmouredInvader(PImage image, PImage image2, int x, int y) {
-        super(image, image2, x, y);
+    ArmouredInvader(String rootImagePath, int x, int y, PApplet parent) {
+        super(rootImagePath, x, y, parent);
     }
 
     int hasBeenShot(Tank tank, int tankProjectileCount) {

@@ -19,11 +19,11 @@ abstract class Components {
         return this.image;
     }
 
-    int getX() {
+    public int getX() {
         return this.x;
     }
 
-    int getY() {
+    public int getY() {
         return this.y;
     }
 

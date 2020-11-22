@@ -1,11 +1,12 @@
 package invadem;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 public class RegularInvader extends Invader {
 
-    RegularInvader(PImage image, PImage image2, int x, int y) {
-        super(image, image2, x, y);
+    RegularInvader(String rootImagePath, int x, int y, PApplet parent) {
+        super(rootImagePath, x, y, parent);
     }
 
     int hasBeenShot(Tank tank, int tankProjectileCount) {

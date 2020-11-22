@@ -41,6 +41,9 @@ class Barrier extends Components {
         if (this.count == 2) {
             shotState = new ShotTwiceState();
         }
+        if (this.count == 3) {
+            destroy();
+        }
     }
 
     boolean hitByProjectile(int projectileCount, List<Projectile> projectiles) {
