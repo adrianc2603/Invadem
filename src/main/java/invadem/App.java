@@ -37,10 +37,13 @@ public class App extends PApplet {
         int currentScore = 0;
         if (levelCount != 1) {
             currentScore = level.getCurrentScore();
-            shootTime = 5000;
+            if (shootTime != 1000) {
+                shootTime -= 1000;
+            }
         }
 
-        LevelDirector director = new LevelDirector(new ConcreteLevelBuilder(), this, shootTime, currentScore, highScore);
+        LevelBuilder builder = new ConcreteLevelBuilder();
+        LevelDirector director = new LevelDirector(builder, this, shootTime, currentScore, highScore);
         level = director.construct();
 
         gameOver = loadImage("gameover.png");
@@ -138,9 +141,8 @@ public class App extends PApplet {
 
         // If SPACEBAR is pressed, prepare to fire projectile
         if (key == ' ' && !gameOverFlag && !nextLevelFlag && !controlsFlag) {
-            int xTankProjectile = level.getTank().getX() + 11;
-            int yTankProjectile = level.getTank().getY();
-            level.getTank().getProjectiles().add(new Projectile(loadImage("projectile.png"), xTankProjectile, yTankProjectile, false));
+            level.getTank().getProjectiles().add(new Projectile(loadImage("projectile.png"),
+                    level.getTank().getX() + 11, level.getTank().getY(), false));
         }
 
         // If c is pressed, display game controls
@@ -186,7 +188,6 @@ public class App extends PApplet {
     private void gameOver() {
         startLevel();
         levelCount = 0;
-        shootTime = 5000;
         if (level.getCurrentScore() > highScore) {
             highScore = level.getCurrentScore();
         }
@@ -198,9 +199,6 @@ public class App extends PApplet {
     public void nextLevel() {
         startLevel();
         levelCount++;
-        if (shootTime != 1000) {
-            shootTime -= 1000;
-        }
         timer = 0;
         nextLevelFlag = true;
     }
