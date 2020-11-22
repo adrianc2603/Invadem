@@ -1,27 +1,32 @@
 package invadem;
 
+import invadem.BarrierShotState.*;
+import invadem.BarrierShotState.ShotState;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.List;
 
 class Barrier extends Components {
 
-    private PImage image2, image3;
     private int count;
+    private ShotState shotState;
+    PApplet parent;
+    String rootImagePath;
 
-    Barrier(PImage image, PImage image2, PImage image3, int x, int y) {
-        super(image, x, y);
-        this.image2 = image2;
-        this.image3 = image3;
+    Barrier(String rootImagePath, int x, int y, PApplet parent) {
+        super(parent.loadImage(rootImagePath + "1.png"), x, y);
+        this.rootImagePath = rootImagePath;
+        this.parent = parent;
+        this.x = x;
+        this.y = y;
         this.count = 0;
+        this.shotState = new NeverShotState();
     }
 
-    PImage getImage2() {
-        return this.image2;
-    }
-
-    PImage getImage3() {
-        return this.image3;
+    @Override
+    PImage getImage() {
+        return shotState.getImage(this.rootImagePath, this.parent);
     }
 
     int getCount() {
@@ -30,6 +35,12 @@ class Barrier extends Components {
 
     void incrementCount() {
         this.count++;
+        if (this.count == 1) {
+            shotState = new ShotOnceState();
+        }
+        if (this.count == 2) {
+            shotState = new ShotTwiceState();
+        }
     }
 
     boolean hitByProjectile(int projectileCount, List<Projectile> projectiles) {

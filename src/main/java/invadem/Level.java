@@ -82,16 +82,10 @@ public class Level {
 
         // Load barriers to screen unless they have been destroyed
         for (Barrier barrier : barriers) {
-            if (barrier.doesExist() && barrier.getCount() == 0) {
+            if (barrier.doesExist() && barrier.getCount() != 3) {
                 parent.image(barrier.getImage(), barrier.getX(), barrier.getY());
             }
-            else if (barrier.doesExist() && barrier.getCount() == 1) {
-                parent.image(barrier.getImage2(), barrier.getX(), barrier.getY());
-            }
-            else if (barrier.doesExist() && barrier.getCount() == 2) {
-                parent.image(barrier.getImage3(), barrier.getX(), barrier.getY());
-            }
-            else if (barrier.doesExist() && barrier.getCount() == 3) {
+            else {
                 barrier.destroy();
             }
         }
