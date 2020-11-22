@@ -1,6 +1,8 @@
 package invadem.LevelBuilder;
 
 import invadem.*;
+import invadem.InvaderFactory.ConcreteInvaderFactory;
+import invadem.InvaderFactory.InvaderFactory;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
@@ -11,6 +13,8 @@ public class ConcreteLevelBuilder implements LevelBuilder {
     private Tank tank;
     private List<Barrier> barriers = new ArrayList<>();
     private List<Invader> invaders = new ArrayList<>();
+
+    InvaderFactory invaderFactory = new ConcreteInvaderFactory();
 
     @Override
     public void buildLevel(PApplet parent) {
@@ -52,53 +56,54 @@ public class ConcreteLevelBuilder implements LevelBuilder {
 
     @Override
     public void buildInvaders(PApplet parent) {
+
         // Initialise row 1 invaders (Armoured Invaders)
-        invaders.add(new ArmouredInvader("_armoured.png", 150, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 185, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 220, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 255, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 290, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 325, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 360, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 395, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 430, 40, parent));
-        invaders.add(new ArmouredInvader("_armoured.png", 465, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 150, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 185, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 220, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 255, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 290, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 325, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 360, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 395, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 430, 40, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.ARMOURED, 465, 40, parent));
 
         // Initialise row 2 invaders (Power Invaders)
-        invaders.add(new PowerInvader("_power.png", 150, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 185, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 220, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 255, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 290, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 325, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 360, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 395, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 430, 80, parent));
-        invaders.add(new PowerInvader("_power.png", 465, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 150, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 185, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 220, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 255, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 290, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 325, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 360, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 395, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 430, 80, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.POWER, 465, 80, parent));
 
         // Initialise row 3 invaders
-        invaders.add(new RegularInvader(".png", 150, 120, parent));
-        invaders.add(new RegularInvader(".png", 185, 120, parent));
-        invaders.add(new RegularInvader(".png", 220, 120, parent));
-        invaders.add(new RegularInvader(".png", 255, 120, parent));
-        invaders.add(new RegularInvader(".png", 290, 120, parent));
-        invaders.add(new RegularInvader(".png", 325, 120, parent));
-        invaders.add(new RegularInvader(".png", 360, 120, parent));
-        invaders.add(new RegularInvader(".png", 395, 120, parent));
-        invaders.add(new RegularInvader(".png", 430, 120, parent));
-        invaders.add(new RegularInvader(".png", 465, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 150, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 185, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 220, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 255, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 290, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 325, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 360, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 395, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 430, 120, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 465, 120, parent));
 
         // Initialise row 4 invaders
-        invaders.add(new RegularInvader(".png", 150, 160, parent));
-        invaders.add(new RegularInvader(".png", 185, 160, parent));
-        invaders.add(new RegularInvader(".png", 220, 160, parent));
-        invaders.add(new RegularInvader(".png", 255, 160, parent));
-        invaders.add(new RegularInvader(".png", 290, 160, parent));
-        invaders.add(new RegularInvader(".png", 325, 160, parent));
-        invaders.add(new RegularInvader(".png", 360, 160, parent));
-        invaders.add(new RegularInvader(".png", 395, 160, parent));
-        invaders.add(new RegularInvader(".png", 430, 160, parent));
-        invaders.add(new RegularInvader(".png", 465, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 150, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 185, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 220, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 255, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 290, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 325, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 360, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 395, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 430, 160, parent));
+        invaders.add(invaderFactory.createInvader(InvaderFactory.InvaderType.REGULAR, 465, 160, parent));
     }
 
     @Override
