@@ -178,50 +178,43 @@ public class ConcreteLevel implements Level {
 
     // Fire invader projectile, destroying barrier/tank if it hits it
     private void fireInvaderProjectile() {
-        int invaderProjectileCount = 0;
-        Projectile proj;
-        while (invaderProjectileCount < invaderProjectiles.size()) {
-            proj = invaderProjectiles.get(invaderProjectileCount);
-            if (proj.doesExist()) {
-                parent.image(proj.getImage(), proj.getX(), proj.getY());
-                proj.moveDown();
-                if (barrierIsHit(invaderProjectileCount, invaderProjectiles) || proj.getY() >= 480) {
-                    invaderProjectiles.get(invaderProjectileCount).destroy();
-                }
-                if (tank.hitByProjectile(invaderProjectileCount, invaderProjectiles)) {
-                    if (invaderProjectiles.get(invaderProjectileCount).isPower()) {
-                        tank.hitByPowerProjectile();
-                    }
-                    invaderProjectiles.get(invaderProjectileCount).destroy();
-                }
+        for (Projectile proj : invaderProjectiles) {
+            if (!proj.doesExist()) {
+                continue;
             }
-            invaderProjectileCount++;
+            parent.image(proj.getImage(), proj.getX(), proj.getY());
+            proj.moveDown();
+            if (barrierIsHit(proj) || proj.getY() >= 480) {
+                proj.destroy();
+            }
+            if (tank.hitByProjectile(proj)) {
+                if (proj.isPower()) {
+                    tank.hitByPowerProjectile();
+                }
+                proj.destroy();
+            }
         }
     }
 
     // Fire projectile from tank and destroy barrier/invader if it hits it
     private void fireTankProjectile() {
-        int tankProjectileCount = 0;
-        Projectile proj;
-        while (tankProjectileCount < tank.getProjectiles().size()) {
-            proj = tank.getProjectiles().get(tankProjectileCount);
-            if (proj.doesExist()) {
-                parent.image(proj.getImage(), proj.getX(), proj.getY());
-                proj.moveUp();
-                if (barrierIsHit(tankProjectileCount, tank.getProjectiles()) || destroyInvader(tankProjectileCount)
-                        || proj.getY() == 0) {
-                    proj.destroy();
-                }
+        for (Projectile proj : tank.getProjectiles()) {
+            if (!proj.doesExist()) {
+                continue;
             }
-            tankProjectileCount++;
+            parent.image(proj.getImage(), proj.getX(), proj.getY());
+            proj.moveUp();
+            if (barrierIsHit(proj) || destroyInvader(proj) || proj.getY() >= 0) {
+                proj.destroy();
+            }
         }
     }
 
     // Remove invader from screen if it's destroyed by projectile fired by tank and return true
-    private boolean destroyInvader(int tankProjectileCount) {
+    private boolean destroyInvader(Projectile proj) {
         int score;
         for (Invader invader : invaders) {
-            score = invader.hasBeenShot(tank, tankProjectileCount);
+            score = invader.hasBeenShot(proj);
             if (score != 0) {
                 currentScore += score;
                 invader.destroy();
@@ -232,9 +225,9 @@ public class ConcreteLevel implements Level {
     }
 
     // If barrier is hit by a projectile, slowly destroy it
-    private boolean barrierIsHit(int projectileCount, List<Projectile> projectiles) {
+    private boolean barrierIsHit(Projectile proj) {
         for (Barrier barrier : barriers) {
-            if (barrier.hitByProjectile(projectileCount, projectiles)) {
+            if (barrier.hitByProjectile(proj)) {
                 return true;
             }
         }

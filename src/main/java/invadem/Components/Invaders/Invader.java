@@ -1,6 +1,7 @@
 package invadem.Components.Invaders;
 
 import invadem.Components.Component;
+import invadem.Components.Projectile;
 import invadem.Components.Tank;
 import invadem.Components.Invaders.InvaderMovementStrategy.*;
 import processing.core.PApplet;
@@ -74,5 +75,5 @@ public abstract class Invader extends Component {
         return this.count;
     }
 
-    public abstract int hasBeenShot(Tank tank, int tankProjectileCount);
+    public abstract int hasBeenShot(Projectile proj);
 }

@@ -48,9 +48,9 @@ public class Barrier extends Component {
         }
     }
 
-    public boolean hitByProjectile(int projectileCount, List<Projectile> projectiles) {
-        if ((doesExist()) && (getX() <= projectiles.get(projectileCount).getX()) && (projectiles.get(projectileCount).getX() <= getX() + 8) && (getY() <= projectiles.get(projectileCount).getY()) && (projectiles.get(projectileCount).getY() <= getY() + 8)) {
-            if (projectiles.get(projectileCount).isPower()) {
+    public boolean hitByProjectile(Projectile proj) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 8) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 8)) {
+            if (proj.isPower()) {
                 destroy();
             } else {
                 incrementCount();

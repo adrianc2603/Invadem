@@ -41,8 +41,8 @@ public class Tank extends Component {
         this.count = 3;
     }
 
-    public boolean hitByProjectile(int projectileCount, List<Projectile> projectiles) {
-        if ((doesExist()) && (getX() <= projectiles.get(projectileCount).getX()) && (projectiles.get(projectileCount).getX() <= getX() + 22) && (getY() <= projectiles.get(projectileCount).getY()) && (projectiles.get(projectileCount).getY() <= getY() + 14)) {
+    public boolean hitByProjectile(Projectile proj) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 22) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 14)) {
             incrementCount();
             return true;
         }

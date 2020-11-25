@@ -1,6 +1,7 @@
 package invadem.Components.Invaders;
 
 import invadem.Components.Invaders.Invader;
+import invadem.Components.Projectile;
 import invadem.Components.Tank;
 import processing.core.PApplet;
 
@@ -10,14 +11,14 @@ public class ArmouredInvader extends Invader {
         super("_armoured.png", x, y, parent);
     }
 
-    public int hasBeenShot(Tank tank, int tankProjectileCount) {
-        if ((doesExist()) && (getX() <= tank.getProjectiles().get(tankProjectileCount).getX()) && (tank.getProjectiles().get(tankProjectileCount).getX() <= getX() + 16) && (getY() <= tank.getProjectiles().get(tankProjectileCount).getY()) && (tank.getProjectiles().get(tankProjectileCount).getY() <= getY() + 16)) {
+    public int hasBeenShot(Projectile proj) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 16) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 16)) {
             incrementCount();
             if (getCount() == 3) {
                 return 250;
             }
             else {
-                tank.getProjectiles().get(tankProjectileCount).destroy();
+                proj.destroy();
                 return 0;
             }
         }
