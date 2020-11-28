@@ -44,4 +44,12 @@ public abstract class Component {
     public void destroy() {
         this.doesExist = false;
     }
+
+    public boolean collision(Component c) {
+        return doesExist() &&
+                (getX() <= c.getX()) &&
+                (c.getX() <= getX() + getWidth()) &&
+                (getY() <= c.getY()) &&
+                (c.getY() <= getY() + getHeight());
+    }
 }

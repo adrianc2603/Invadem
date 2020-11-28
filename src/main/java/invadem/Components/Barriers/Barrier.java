@@ -49,7 +49,7 @@ public class Barrier extends Component {
     }
 
     public boolean hitByProjectile(Projectile proj) {
-        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + getWidth()) && (getY() <= proj.getY()) && (proj.getY() <= getY() + getHeight())) {
+        if (collision(proj)) {
             if (proj.isPower()) {
                 destroy();
             } else {

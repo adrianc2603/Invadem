@@ -12,7 +12,7 @@ public class ArmouredInvader extends Invader {
     }
 
     public int hasBeenShot(Projectile proj) {
-        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + getWidth()) && (getY() <= proj.getY()) && (proj.getY() <= getY() + getHeight())) {
+        if (collision(proj)) {
             incrementCount();
             if (getCount() == 3) {
                 return 250;
