@@ -12,7 +12,7 @@ public class PowerInvader extends Invader {
     }
 
     public int hasBeenShot(Projectile proj) {
-        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 16) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 16)) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + getWidth()) && (getY() <= proj.getY()) && (proj.getY() <= getY() + getHeight())) {
             return 250;
         }
         return 0;

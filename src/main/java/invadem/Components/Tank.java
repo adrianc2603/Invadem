@@ -14,6 +14,8 @@ public class Tank extends Component {
     public Tank(PImage image, int x, int y) {
         super(image, x, y);
         this.count = 0;
+        this.width = 22;
+        this.height = 14;
         this.projectiles = new ArrayList<>();
     }
 
@@ -42,7 +44,7 @@ public class Tank extends Component {
     }
 
     public boolean hitByProjectile(Projectile proj) {
-        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 22) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 14)) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + getWidth()) && (getY() <= proj.getY()) && (proj.getY() <= getY() + getHeight())) {
             incrementCount();
             return true;
         }

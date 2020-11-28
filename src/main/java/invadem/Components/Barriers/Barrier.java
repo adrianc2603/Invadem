@@ -20,9 +20,9 @@ public class Barrier extends Component {
         super(parent.loadImage(imagePathBeginning + "1.png"), x, y);
         this.imagePathBeginning = imagePathBeginning;
         this.parent = parent;
-        this.x = x;
-        this.y = y;
         this.count = 0;
+        this.width = 8;
+        this.height = 8;
         this.shotState = new NeverShotState();
     }
 
@@ -49,7 +49,7 @@ public class Barrier extends Component {
     }
 
     public boolean hitByProjectile(Projectile proj) {
-        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + 8) && (getY() <= proj.getY()) && (proj.getY() <= getY() + 8)) {
+        if ((doesExist()) && (getX() <= proj.getX()) && (proj.getX() <= getX() + getWidth()) && (getY() <= proj.getY()) && (proj.getY() <= getY() + getHeight())) {
             if (proj.isPower()) {
                 destroy();
             } else {

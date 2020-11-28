@@ -6,6 +6,8 @@ public abstract class Component {
 
     private PImage image;
     protected int x, y;
+    protected int width = 0;
+    protected int height = 0;
     protected boolean doesExist;
 
     public Component(PImage image, int x, int y) {
@@ -25,6 +27,14 @@ public abstract class Component {
 
     public int getY() {
         return this.y;
+    }
+
+    public int getWidth() {
+        return this.width;
+    }
+
+    public int getHeight() {
+        return this.height;
     }
 
     public boolean doesExist() {

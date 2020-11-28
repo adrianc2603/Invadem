@@ -204,7 +204,7 @@ public class ConcreteLevel implements Level {
             }
             parent.image(proj.getImage(), proj.getX(), proj.getY());
             proj.moveUp();
-            if (barrierIsHit(proj) || destroyInvader(proj) || proj.getY() >= 0) {
+            if (barrierIsHit(proj) || destroyInvader(proj) || proj.getY() <= 0) {
                 proj.destroy();
             }
         }

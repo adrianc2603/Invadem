@@ -25,6 +25,8 @@ public abstract class Invader extends Component {
         this.imagePathEnding = imagePathEnding;
         this.parent = parent;
         this.count = 0;
+        this.width = 16;
+        this.height = 16;
         this.movementStrategy = new MoveRightStrategy();
     }
 
