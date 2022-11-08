@@ -27,5 +27,15 @@ START/RESUME GAME: G
 ### Play on Your Machine 
 Make sure your machine is running Java 8 (I used Java 8.0.265-zulu) and Gradle (I used Gradle 6.6). Then run into the command line 'gradle build' followed by 'gradle run'.
 
+1. [Install Gradle](https://gradle.org/install/)
+
+2. Build the game:
+
+        gradle build
+            
+3. Run the game:
+
+        gradle run            
+
 ### Acknowledgements 
 I acknowledge that all images used for each Component was supplied by the INFO1113 Semester 2, 2019 staff, and are not created by me.
